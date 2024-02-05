@@ -51,6 +51,16 @@ const enableBoxes = () => {
     }
 }
 
+//tie condition
+const checkTie = () => {
+    for (let box of boxes) {
+        if (box.innerText === "") {
+            return false;
+        }
+    }
+    return true;
+};
+
 // checking the game result
 const checkWinner = () => {
     for (let pattern of winPatterns) {
@@ -71,6 +81,11 @@ const checkWinner = () => {
         }
         
     }
+    if(checkTie()){
+                container.classList.add("hide");
+                win.classList.remove("hide");
+                message.innerText = "It is a tie!";
+    }
 };
 
 //first time opening a game
@@ -81,7 +96,6 @@ if(!checkWinner() )
 
                 message.innerText = "Start a new game";
 }
-jdfnv
 //making reset button work
 reset.addEventListener("click", () => {
     for (let box of boxes) {
